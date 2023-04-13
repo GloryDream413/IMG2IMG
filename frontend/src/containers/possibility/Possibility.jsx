@@ -8,7 +8,7 @@ const Possibility = () => (
       <img src={possibility} alt="possibility" />
     </div>
     <div className="gpt3__possibility-content">
-      <h1 className="gradient__text">Generated Images</h1>
+      <h1 className="gradient__text">Generated Image</h1>
       <p>This platform generates images from original image and promt.</p>
     </div>
   </div>

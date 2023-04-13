@@ -12,6 +12,8 @@
     "react-icons": "^4.6.0",
     "react-scripts": "5.0.1",
     "react-spinners": "^0.13.8",
+    "react-tailwindcss-select": "^1.8.5",
+    "tailwindcss": "^3.3.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

@@ -14,11 +14,25 @@ export const Header = () => {
   const [pictureRoute, setPictureRoute] = useState('')
   const [bLoadingFlag, setLoadingFlag] = useState(false)
 
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    const imageUrl = URL.createObjectURL(file);
+    setPictureRoute(imageUrl);
+    console.log('Selected file:', pictureRoute);
+  }
+
+  const onUpload = async () => {
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.addEventListener('change', handleFileUpload);
+    fileInput.click();
+  };
+
   const onGenerate = async () => {
     setLoadingFlag(true);
     console.log(ai);
     const response = await axios.post(
-      'http://65.21.236.218:8081/getImage',
+      'http://65.21.236.218:7777/getImage',
       {
         input: prompt
       },
@@ -36,7 +50,11 @@ export const Header = () => {
   return (
     <div className="gpt3__header section__padding" id="home">
       <div className="gpt3__header-content">
-        <h1 className="gradient__text">IMAGE GENERATOR</h1>
+        <h1 className="gradient__text">Original Image</h1>
+        <div className="gpt3__header-content__input">
+          <button type="button" onClick={onUpload}>Upload</button>
+        </div>
+        <br />
         <textarea
           className="desc"
           placeholder="Enter your imagine"
