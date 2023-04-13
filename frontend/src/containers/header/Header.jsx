@@ -18,7 +18,6 @@ export const Header = () => {
     const file = event.target.files[0];
     const imageUrl = URL.createObjectURL(file);
     setPictureRoute(imageUrl);
-    console.log('Selected file:', pictureRoute);
   }
 
   const onUpload = async () => {
@@ -30,11 +29,11 @@ export const Header = () => {
 
   const onGenerate = async () => {
     setLoadingFlag(true);
-    console.log(ai);
     const response = await axios.post(
       'http://65.21.236.218:7777/getImage',
       {
-        input: prompt
+        image : pictureRoute,
+        prompt : prompt
       },
       {
         headers: {
@@ -42,7 +41,6 @@ export const Header = () => {
         }
       }
     )
-    console.log(response.data.response.output[0]);
     setPictureRoute(response.data.response.output[0]);
     setLoadingFlag(false);
   };
@@ -57,7 +55,7 @@ export const Header = () => {
         <br />
         <textarea
           className="desc"
-          placeholder="Enter your imagine"
+          placeholder="Enter your prompt"
           name="prompt"
           value={prompt}
           onChange={onPromptChange}

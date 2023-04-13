@@ -22,13 +22,15 @@ async function getPredictionStatus (id) {
   return prediction
 }
 
-async function createPrediction (text) {
+async function createPrediction (image, text) {
+  const image_original = image.replace('blob:', 'uri:');
+  const image_mask = URL.createObjectURL("./mask_image");
   const response = await axios.post(
     'https://api.replicate.com/v1/predictions',
     {
       version:
-        '9936c2001faa2194a261c01381f90e65261879985476014a0a37a334593a05eb',
-      input: { prompt: 'nft style' + text,
+        '5deb8e4d829cba7939dde1640cc4e4e0d4ba460bd1645895133406f4922a20f8',
+      input: { image : image_original, prompt: text, mask_image : image_mask,
       n_predictions:1 }
     },
     {
@@ -43,8 +45,10 @@ async function createPrediction (text) {
 }
 
 app.post('/getImage', async (req, res) => {
-  let prompt = req.body.input
-  const prediction = await createPrediction(prompt)
+  let image = req.body.image
+  let prompt = req.body.prompt
+
+  const prediction = await createPrediction(image, prompt)
   let response = null
   let nCount = 0
   const sleep = ms => new Promise(r => setTimeout(r, ms))
