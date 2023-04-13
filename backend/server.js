@@ -5,8 +5,8 @@ const cors = require('cors')
 const axios = require('axios')
 
 app.use(cors())
-app.use(express.urlencoded({ extended: true }))
-app.use(express.json())
+app.use(express.json({limit: '50mb'}));
+app.use(express.urlencoded({limit: '50mb', extended: true, parameterLimit: 50000}));
 
 async function getPredictionStatus (id) {
   const response = await axios.get(
@@ -14,7 +14,7 @@ async function getPredictionStatus (id) {
     {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Token 57b5717e8632693a79f0747038512564a640764c`
+        Authorization: `Token r8_0Jmnu7vefvCDRiRVtsAGKYwKdgfBhPe4GzWfV`
       }
     }
   )
@@ -22,16 +22,14 @@ async function getPredictionStatus (id) {
   return prediction
 }
 
-async function createPrediction (image, text) {
-  const image_original = image.replace('blob:', 'uri:');
-  const image_mask = URL.createObjectURL("./mask_image");
+async function createPrediction (image_original, prompt, image_mask) {
   const response = await axios.post(
     'https://api.replicate.com/v1/predictions',
     {
       version:
         '5deb8e4d829cba7939dde1640cc4e4e0d4ba460bd1645895133406f4922a20f8',
-      input: { image : image_original, prompt: text, mask_image : image_mask,
-      n_predictions:1 }
+      input: { image : image_original, prompt: prompt, mask_image : image_mask,
+      num_outputs:1 }
     },
     {
       headers: {
@@ -45,10 +43,11 @@ async function createPrediction (image, text) {
 }
 
 app.post('/getImage', async (req, res) => {
-  let image = req.body.image
+  let image_original = req.body.image_original
   let prompt = req.body.prompt
+  let image_mask = req.body.image_mask
 
-  const prediction = await createPrediction(image, prompt)
+  const prediction = await createPrediction(image_original, prompt, image_mask)
   let response = null
   let nCount = 0
   const sleep = ms => new Promise(r => setTimeout(r, ms))

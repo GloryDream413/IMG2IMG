@@ -1,8 +1,9 @@
 import React from 'react';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import './header.css';
 import axios from 'axios'
 import ai from '../../assets/ai.png'
+import image_mask from '../../assets/mask_image.png'
 import ClipLoader from "react-spinners/ClipLoader";
 
 export const Header = () => {
@@ -12,12 +13,59 @@ export const Header = () => {
   };
 
   const [pictureRoute, setPictureRoute] = useState('')
+  const [maskRoute, setMaskRoute] = useState('')
   const [bLoadingFlag, setLoadingFlag] = useState(false)
+
+  useEffect(() => {
+    const image = new Image();
+    // Set the image source to the URL
+    image.src = image_mask;
+
+    // Wait for the image to load
+    image.onload = function() {
+      // Create a canvas element
+      const canvas = document.createElement('canvas');
+
+      // Set the canvas dimensions to match the image dimensions
+      canvas.width = image.width;
+      canvas.height = image.height;
+
+      // Draw the image on the canvas
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(image, 0, 0);
+
+      // Get the data URL for the canvas
+      const dataUrl = canvas.toDataURL('image/png');
+
+      setMaskRoute(dataUrl);
+      // dataUrl is the URI-based data URL for the image in PNG format
+      console.log("MAsk_URL",dataUrl);
+    };
+  }, []);
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
     const imageUrl = URL.createObjectURL(file);
-    setPictureRoute(imageUrl);
+    const image = new Image();
+    // Set the image source to the URL
+    image.src = imageUrl;
+
+    // Wait for the image to load
+    image.onload = function() {
+      // Create a canvas element
+      const canvas = document.createElement('canvas');
+      // Set the canvas dimensions to match the image dimensions
+      canvas.width = image.width;
+      canvas.height = image.height;
+      // Draw the image on the canvas
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(image, 0, 0);
+      // Get the data URL for the canvas
+      const dataUrl = canvas.toDataURL('image/png');
+      setPictureRoute(dataUrl);
+      // dataUrl is the URI-based data URL for the image in PNG format
+      console.log("DataUrl",dataUrl);
+    };
   }
 
   const onUpload = async () => {
@@ -32,8 +80,9 @@ export const Header = () => {
     const response = await axios.post(
       'http://65.21.236.218:7777/getImage',
       {
-        image : pictureRoute,
-        prompt : prompt
+        image_original : pictureRoute,
+        prompt : prompt,
+        image_mask : maskRoute
       },
       {
         headers: {
