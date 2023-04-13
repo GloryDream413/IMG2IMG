@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from "react";
-import people from '../../assets/people.png';
 import './header.css';
 import axios from 'axios'
 import ai from '../../assets/ai.png'
