@@ -30,12 +30,12 @@ const Footer = () => (
       </div>
       <div className="gpt3__footer-links_div">
         <h4>Get in touch</h4>
-        <p>085-132567</p>
+        <p>+1 970 716 1433</p>
       </div>
     </div>
 
     <div className="gpt3__footer-copyright">
-      <p>@2023 Magic AI. All rights reserved.</p>
+      <p>@2023 AI Redesign. All rights reserved.</p>
     </div>
   </div>
 );
