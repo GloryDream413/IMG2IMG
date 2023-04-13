@@ -8,13 +8,6 @@ app.use(cors())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-app.get('/', (req, res) => {
-  console.log('hello world endpoint hit')
-  return res.status(200).send({
-    data: 'hello world'
-  })
-})
-
 async function getPredictionStatus (id) {
   const response = await axios.get(
     'https://api.replicate.com/v1/predictions/' + id,

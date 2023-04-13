@@ -49,6 +49,8 @@
     outline: none;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 .gpt3__navbar-links_container p,

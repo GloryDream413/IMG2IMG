@@ -3,22 +3,15 @@ import { RiMenu3Line, RiCloseLine } from 'react-icons/ri';
 import logo from '../../assets/logo.png'
 import './navbar.css';
 
-//BEM -> Block Element Modifier
-
 const Menu = () => (
   <>
-    <p><a href="#home">Home</a></p>
-    {/* <p><a href="#wgpt3">What is MagicAI?</a></p> */}
-    <p><a href="#possibility">What is MagicAI?</a></p>
-    {/* <p><a href="#features">Case Studies</a></p> */}
-    <p><a href="#blog">Library</a></p>
+    <p><a href="#home">Original</a></p>
+    <p><a href="#possibility">Generated</a></p>
   </>
 )
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
-
-
   return (
     <div className="gpt3__navbar">
       <div className="gpt3__navbar-links">
@@ -29,16 +22,16 @@ const Navbar = () => {
           <Menu />
         </div>
       </div>
-      {/* <div className="gpt3__navbar-sign">
-        <button type="button" >CONNECT WALLET</button>
-      </div> */}
+      <div className="gpt3__navbar-sign">
+        <button type="button" >Get Started</button>
+      </div>
       <div className="gpt3__navbar-menu">
         {toggleMenu
           ? <RiCloseLine color="#fff" size={27} onClick={() => setToggleMenu(false)} />
           : <RiMenu3Line color="#fff" size={27} onClick={() => setToggleMenu(true)} />
         }
 
-        {toggleMenu && ( //only if this variable is true, then render what is coming
+        {toggleMenu && (
           <div className="gpt3__navbar-menu_container scale-up-center">
             <div className="gpt3__navbar-menu_container-links">
               <Menu />
