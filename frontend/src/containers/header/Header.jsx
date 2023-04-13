@@ -39,7 +39,6 @@ export const Header = () => {
 
       setMaskRoute(dataUrl);
       // dataUrl is the URI-based data URL for the image in PNG format
-      console.log("MAsk_URL",dataUrl);
     };
   }, []);
 
@@ -63,8 +62,6 @@ export const Header = () => {
       // Get the data URL for the canvas
       const dataUrl = canvas.toDataURL('image/png');
       setPictureRoute(dataUrl);
-      // dataUrl is the URI-based data URL for the image in PNG format
-      console.log("DataUrl",dataUrl);
     };
   }
 
