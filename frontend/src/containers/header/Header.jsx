@@ -1,10 +1,11 @@
 import React from 'react';
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import './header.css';
 import axios from 'axios'
 import ai from '../../assets/ai.png'
 import image_mask from '../../assets/mask_image.png'
 import ClipLoader from "react-spinners/ClipLoader";
+import { UserContext } from "../../App";
 
 export const Header = () => {
   const [prompt, setPrompt] = useState('')
@@ -13,6 +14,7 @@ export const Header = () => {
   };
 
   const [pictureRoute, setPictureRoute] = useState('')
+  const { nftRoute, setNftRoute } = useContext(UserContext);
   const [maskRoute, setMaskRoute] = useState('')
   const [bLoadingFlag, setLoadingFlag] = useState(false)
 
@@ -87,7 +89,8 @@ export const Header = () => {
         }
       }
     )
-    setPictureRoute(response.data.response.output[0]);
+    setNftRoute(response.data.response.output[0]);
+    console.log("NFT-Route", nftRoute);
     setLoadingFlag(false);
   };
 
