@@ -9,6 +9,10 @@
   justify-content: center;
 }
 
+.gpt3__header .generate span{
+  color: #2563eb;
+}
+
 .gpt3__header .generate button {
     width: 30%;
     min-height: 50px;
