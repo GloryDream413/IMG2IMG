@@ -1,6 +1,6 @@
 import React from 'react'
 import './App.css'
-import {Footer, Possibility, Header} from './containers'
+import {Footer, Header} from './containers'
 import { Navbar,} from './components';
 import './App.css'
 import { useState, createContext } from 'react'
@@ -15,7 +15,6 @@ const App = () => {
             <Navbar />
             <Header />
           </div>
-          <Possibility/>
           <Footer/>
       </div>
     </UserContext.Provider>

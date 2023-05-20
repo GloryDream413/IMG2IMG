@@ -73,7 +73,6 @@ export const Header = () => {
     fileInput.addEventListener('change', handleFileUpload);
     fileInput.click();
   };
-
   const onGenerate = async () => {
     setLoadingFlag(true);
     const response = await axios.post(
@@ -93,30 +92,22 @@ export const Header = () => {
     console.log("NFT-Route", nftRoute);
     setLoadingFlag(false);
   };
-
   return (
     <div className="gpt3__header section__padding" id="home">
+      <h1>Generating dream rooms using AI for everyone.</h1>
+      
       <div className="gpt3__header-content">
-        <h1 className="gradient__text">Original Image</h1>
-        <div className="gpt3__header-content__input">
-          <button type="button" onClick={onUpload}>Upload</button>
+        <div className="original">
+          <h2>Original Image</h2>
+          <img src={ai} alt="ai" />
         </div>
-        <br />
-        <textarea
-          className="desc"
-          placeholder="Enter your prompt"
-          name="prompt"
-          value={prompt}
-          onChange={onPromptChange}
-        >
-        </textarea>
-
-        <div className="gpt3__header-content__input">
-          <button type="button" onClick={onGenerate}>Generate</button>
+        <div className="generated">
+          <h2>Generated Image</h2>
+          <img src={ai} alt="ai" />
         </div>
       </div>
 
-      <div className="gpt3__header-image">
+      {/* <div className="gpt3__header-image">
         {(pictureRoute === '') &&
           <img src={ai} alt="ai" />
         }
@@ -135,9 +126,8 @@ export const Header = () => {
             />
           }
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
-
 export default Header;
