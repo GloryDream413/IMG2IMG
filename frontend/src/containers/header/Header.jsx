@@ -2,7 +2,8 @@ import React from 'react';
 import { useEffect, useState, useContext } from "react";
 import './header.css';
 import axios from 'axios'
-import ai from '../../assets/ai.png'
+import aiorigin from '../../assets/aiorigin.png'
+import aigenerated from '../../assets/aigenerated.png'
 import image_mask from '../../assets/mask_image.png'
 import ClipLoader from "react-spinners/ClipLoader";
 import { UserContext } from "../../App";
@@ -99,11 +100,11 @@ export const Header = () => {
       <div className="gpt3__header-content">
         <div className="original">
           <h2>Original Image</h2>
-          <img src={ai} alt="ai" />
+          <img src={aiorigin} alt="ai" />
         </div>
         <div className="generated">
           <h2>Generated Image</h2>
-          <img src={ai} alt="ai" />
+          <img src={aigenerated} alt="ai" />
         </div>
       </div>
 

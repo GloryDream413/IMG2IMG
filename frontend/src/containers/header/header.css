@@ -18,14 +18,14 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 50%;
+  width: 45%;
 }
 
 .gpt3__header-content .generated {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 50%;
+  width: 45%;
 }
 
 .gpt3__header-content h2 {
@@ -34,5 +34,7 @@
 }
 
 .gpt3__header-content img {
+  margin-top: 10px;
   width: 100%;
+  border-radius: 5%;
 }
