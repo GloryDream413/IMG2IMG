@@ -3,8 +3,35 @@
   flex-direction: column;
 }
 
+.gpt3__header .generate {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.gpt3__header .generate button {
+    width: 30%;
+    min-height: 50px;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 28px;
+    background: transparent;
+    border: 2px solid #14c2a3;
+    padding: 0 1rem;
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
 .gpt3__header h1 {
-  color:#fff
+  color:#fff;
+  font-weight: 400;
+  font-size: 3.75rem;
 }
 
 .gpt3__header-content {

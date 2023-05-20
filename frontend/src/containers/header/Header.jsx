@@ -95,8 +95,12 @@ export const Header = () => {
   };
   return (
     <div className="gpt3__header section__padding" id="home">
-      <h1>Generating dream rooms using AI for everyone.</h1>
-      
+      <div className='generate'>
+        <h1><b>Generating dream rooms using AI for everyone.</b></h1>
+      </div>
+      <div className='generate'>
+        <button type="button" >Generate your dream room</button>
+      </div>
       <div className="gpt3__header-content">
         <div className="original">
           <h2>Original Image</h2>
