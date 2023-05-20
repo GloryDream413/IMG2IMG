@@ -3,14 +3,16 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     background: var(--color-footer);
+    border-top-color: #fff;
+    border-top-style: solid;
+    border-top-width: 1px;
 }
 
 .gpt3__footer-heading {
     width: 100%;
     text-align: center;
-
+    
     margin-bottom: 3rem;
 }
 
