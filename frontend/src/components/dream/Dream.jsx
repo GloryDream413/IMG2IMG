@@ -136,7 +136,7 @@ export const Dream = () => {
       </div>
       <div className="gpt3__header-content">
         <div className="result1">
-          <img src={image_mask} alt="ai" />
+          <img src={nftRoute} alt="ai" />
         </div>
         <div className="result1">
           <img src={image_mask} alt="ai" />
