@@ -121,3 +121,13 @@ textarea {
   width: 100%;
   resize: none;
 }
+
+.gpt3__header-content .generated .spinner-wrapper {
+  height: 50px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 50px;
+}
