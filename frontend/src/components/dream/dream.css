@@ -57,6 +57,7 @@
   flex-direction: column;
   justify-content: center;
   width: 45%;
+  position: relative;
 }
 
 .gpt3__header-content h2 {
