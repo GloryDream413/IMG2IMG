@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import './dream.css';
 import { useDropzone } from 'react-dropzone';
 import { Link } from 'react-router-dom';
@@ -22,6 +22,12 @@ function UploadDropZone() {
 }
 
 export const Dream = () => {
+
+  const [prompt, setPrompt] = useState('')
+  const onPromptChange = (event) => {
+    setPrompt(event.target.value);
+  };
+
   return (
     <div className="gpt3__header section__padding" id="home">
       <div className='generate'>
@@ -32,8 +38,16 @@ export const Dream = () => {
       </div>
       <div className="gpt3__header-content">
         <div className="original">
-          <h2>Input Prompt</h2>
+          <h2>Upload Image</h2>
           <UploadDropZone />
+          <h2>Input Prompt</h2>
+          <textarea
+            className="desc"
+            placeholder="Enter your prompt"
+            name="prompt"
+            value={prompt}
+            onChange={onPromptChange}
+          ></textarea>
         </div>
         <div className="generated">
           <h2>Uploaded Image</h2>
