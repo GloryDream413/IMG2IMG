@@ -5,8 +5,8 @@ import axios from 'axios'
 import aiorigin from '../../assets/aiorigin.png'
 import aigenerated from '../../assets/aigenerated.png'
 import image_mask from '../../assets/mask_image.png'
-import ClipLoader from "react-spinners/ClipLoader";
-import { UserContext } from "../../App";
+//import ClipLoader from "react-spinners/ClipLoader";
+import { UserContext } from "../homepage/Homepage";
 
 export const Header = () => {
   const [prompt, setPrompt] = useState('')

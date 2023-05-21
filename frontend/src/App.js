@@ -1,24 +1,14 @@
 import React from 'react'
-import './App.css'
-import {Footer, Header} from './containers'
-import { Navbar,} from './components';
-import './App.css'
-import { useState, createContext } from 'react'
-
-export const UserContext = createContext(null)
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Homepage } from './components'
 const App = () => {
-  const [nftRoute, setNftRoute] = useState('')
   return (
-    <UserContext.Provider value={{ nftRoute, setNftRoute }}>
-      <div>
-          <div className="gradient__bg">
-            <Navbar />
-            <Header />
-          </div>
-          <Footer/>
-      </div>
-    </UserContext.Provider>
+    <Router>
+      <Routes>
+          <Route path="/" element={<Homepage />} />
+          {/* <Route path="/dream" component={AboutPage} /> */}
+      </Routes>
+    </Router>
   );
 }
-
 export default App
