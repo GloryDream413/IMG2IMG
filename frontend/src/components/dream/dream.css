@@ -81,15 +81,17 @@
 }
 
 .upload-container {
+  margin-top: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 200px;
+  height: 50px;
   border-style: solid;
   border-color: #fff;
   border-width: 1px;
   border-radius: 5%;
+  border-style: dashed;
 }
 
 .upload-container p {
