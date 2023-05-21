@@ -4,11 +4,14 @@ import { useDropzone } from 'react-dropzone';
 import axios from 'axios'
 import ClipLoader from "react-spinners/ClipLoader";
 import image_mask from '../../assets/mask_image.png'
+import { ToastContainer, toast } from 'react-toastify';
 
 export const Dream = () => {
   const [pictureRoute, setPictureRoute] = useState('')
   const [maskRoute, setMaskRoute] = useState('')
-  const [nftRoute, setNftRoute] = useState('')
+  const [nftRoute1, setNftRoute1] = useState('')
+  const [nftRoute2, setNftRoute2] = useState('')
+  const [nftRoute3, setNftRoute3] = useState('')
   const [prompt, setPrompt] = useState('')
   const onPromptChange = (event) => {
     setPrompt(event.target.value);
@@ -67,9 +70,23 @@ export const Dream = () => {
   const [bLoadingFlag, setLoadingFlag] = useState(false)
 
   const onGenerate = async () => {
+    if(pictureRoute === '')
+    {
+      toast.error("Please upload image.");
+      return;
+    }
+
+    if(prompt === '')
+    {
+      toast.error("Prompt is empty.");
+      return;
+    }
     setLoadingFlag(true);
-    const response = await axios.post(
-      'http://localhost:7777/getImage',
+    console.log("pictureRoute === ", pictureRoute);
+    console.log("prmopt === ", prompt);
+    console.log("image_mask === ", maskRoute);
+    const response1 = await axios.post(
+      'http://65.21.236.218:7777/getImage',
       {
         image_original : pictureRoute,
         prompt : prompt,
@@ -81,8 +98,37 @@ export const Dream = () => {
         }
       }
     )
-    setNftRoute(response.data.response.output[0]);
-    console.log("NFT-Route", nftRoute);
+    setNftRoute1(response1.data.response.output[0]);
+
+    const response2 = await axios.post(
+      'http://65.21.236.218:7777/getImage',
+      {
+        image_original : pictureRoute,
+        prompt : prompt,
+        image_mask : maskRoute
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+    )
+    setNftRoute2(response2.data.response.output[0]);
+
+    const response3 = await axios.post(
+      'http://65.21.236.218:7777/getImage',
+      {
+        image_original : pictureRoute,
+        prompt : prompt,
+        image_mask : maskRoute
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+    )
+    setNftRoute3(response3.data.response.output[0]);
     setLoadingFlag(false);
   };
 
@@ -135,15 +181,23 @@ export const Dream = () => {
         </div>
       </div>
       <div className="gpt3__header-content">
-        <div className="result1">
-          <img src={nftRoute} alt="ai" />
-        </div>
-        <div className="result1">
-          <img src={image_mask} alt="ai" />
-        </div>
-        <div className="result1">
-          <img src={image_mask} alt="ai" />
-        </div>
+        {(nftRoute1 !== '') &&
+          <div className="result1">
+            <img src={nftRoute1} alt="ai" />
+          </div>
+        }
+
+        {(nftRoute2 !== '') &&
+          <div className="result1">
+            <img src={nftRoute2} alt="ai" />
+          </div>
+        }
+
+        {(nftRoute3 !== '') &&
+          <div className="result1">
+            <img src={nftRoute3} alt="ai" />
+          </div>
+        }
       </div>
     </div>
   );
