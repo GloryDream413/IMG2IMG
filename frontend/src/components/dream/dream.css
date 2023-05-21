@@ -69,3 +69,29 @@
   width: 100%;
   border-radius: 5%;
 }
+
+.gpt3__header-content .Uploaded {
+  margin-top: 10px;
+  border-radius: 5%;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 1px;
+  width: 100%;
+  height: 100%;
+}
+
+.upload-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 200px;
+  border-style: solid;
+  border-color: #fff;
+  border-width: 1px;
+  border-radius: 5%;
+}
+
+.upload-container p {
+  color: #fff;
+}
