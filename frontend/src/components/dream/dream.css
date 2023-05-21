@@ -132,3 +132,11 @@ textarea {
   transform: translate(-50%, -50%);
   width: 50px;
 }
+
+.gpt3__header-content .result1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 30%;
+  position: relative;
+}
