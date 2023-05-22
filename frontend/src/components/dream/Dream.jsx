@@ -82,9 +82,39 @@ export const Dream = () => {
       return;
     }
     setLoadingFlag(true);
-    console.log("pictureRoute === ", pictureRoute);
-    console.log("prmopt === ", prompt);
-    console.log("image_mask === ", maskRoute);
+    const response = await axios.post(
+      'http://65.21.236.218:7777/getMaskimage',
+      {
+        image_original : pictureRoute
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+    )
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    fetch(response.data.response.output) // Fetch the image data from the server
+    .then((response) => response.blob()) // Get the image data as a Blob
+    .then((blob) => {
+      const image = new Image();
+      const imageUrl = URL.createObjectURL(blob);
+
+      image.onload = function () {
+        canvas.width = image.width;
+        canvas.height = image.height;
+        ctx.drawImage(image, 0, 0);
+        const dataUrl = canvas.toDataURL('image/png');
+        setMaskRoute(dataUrl);
+        URL.revokeObjectURL(imageUrl);
+      };
+      image.src = imageUrl; // Set the image source to the object URL
+    })
+    .catch((error) => {
+      console.error('Failed to fetch image data:', error);
+    });
+
     const response1 = await axios.post(
       'http://65.21.236.218:7777/getImage',
       {
@@ -183,7 +213,7 @@ export const Dream = () => {
       <div className="gpt3__header-content">
         {(nftRoute1 !== '') &&
           <div className="result1">
-            <img src={nftRoute1} alt="ai" />
+            <img src={maskRoute} alt="ai" />
           </div>
         }
 
