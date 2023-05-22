@@ -30,14 +30,14 @@ export const Dashboard = () => {
         </div>
       </div>
       <div className="gpt3__header-content">
-        <GalleryItem1 />
-        <GalleryItem2 />
-        <GalleryItem3 />
+        <div className='gallery'><GalleryItem1 /></div>
+        <div className='gallery'><GalleryItem2 /></div>
+        <div className='gallery'><GalleryItem3 /></div>
       </div>
       <div className="gpt3__header-content">
-        <GalleryItem4 />
-        <GalleryItem5 />
-        <GalleryItem6 />
+        <div className='gallery'><GalleryItem4 /></div>
+        <div className='gallery'><GalleryItem5 /></div>
+        <div className='gallery'><GalleryItem6 /></div>
       </div>
     </div>
   );

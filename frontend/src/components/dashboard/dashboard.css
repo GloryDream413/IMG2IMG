@@ -69,3 +69,9 @@
   width: 100%;
   border-radius: 10px;
 }
+
+.gallery {
+  display: flex;
+  justify-content: center;
+  width:30%;
+}
