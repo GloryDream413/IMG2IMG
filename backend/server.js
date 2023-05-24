@@ -39,6 +39,7 @@ async function createPrediction (image_original, prompt, image_mask) {
     }
   )
   const prediction = response.data
+  console.log(prediction);
   return prediction
 }
 

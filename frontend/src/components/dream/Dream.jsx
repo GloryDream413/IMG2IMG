@@ -6,6 +6,8 @@ import ClipLoader from "react-spinners/ClipLoader";
 import image_mask from '../../assets/mask_image.png'
 import { ToastContainer, toast } from 'react-toastify';
 
+const baseUrl = "http://65.108.142.188:7777/";
+
 export const Dream = () => {
   const [pictureRoute, setPictureRoute] = useState('')
   const [maskRoute, setMaskRoute] = useState('')
@@ -83,7 +85,7 @@ export const Dream = () => {
     }
     setLoadingFlag(true);
     const response = await axios.post(
-      'http://65.21.236.218:7777/getMaskimage',
+      baseUrl + 'getMaskimage',
       {
         image_original : pictureRoute
       },
@@ -116,7 +118,7 @@ export const Dream = () => {
     });
 
     const response1 = await axios.post(
-      'http://65.21.236.218:7777/getImage',
+      baseUrl + 'getImage',
       {
         image_original : pictureRoute,
         prompt : prompt,
@@ -131,7 +133,7 @@ export const Dream = () => {
     setNftRoute1(response1.data.response.output[0]);
 
     const response2 = await axios.post(
-      'http://65.21.236.218:7777/getImage',
+      baseUrl + 'getImage',
       {
         image_original : pictureRoute,
         prompt : prompt,
@@ -146,7 +148,7 @@ export const Dream = () => {
     setNftRoute2(response2.data.response.output[0]);
 
     const response3 = await axios.post(
-      'http://65.21.236.218:7777/getImage',
+      baseUrl + 'getImage',
       {
         image_original : pictureRoute,
         prompt : prompt,
