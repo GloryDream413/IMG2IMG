@@ -14,7 +14,7 @@ async function getPredictionStatus (id) {
     {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Token 51cb9f81de883a011305cf4da2346c7c99545d31`
+        Authorization: `Token r8_5hdsTcr9XS7R8MraiV33ohfHZrFUOVF35l4HR`
       }
     }
   )
@@ -33,7 +33,7 @@ async function createPrediction (image_original, prompt, image_mask) {
     },
     {
       headers: {
-        Authorization: `Token 51cb9f81de883a011305cf4da2346c7c99545d31`,
+        Authorization: `Token r8_5hdsTcr9XS7R8MraiV33ohfHZrFUOVF35l4HR`,
         'Content-Type': 'application/json'
       }
     }
@@ -53,7 +53,7 @@ async function createMask (image_original) {
     },
     {
       headers: {
-        Authorization: `Token 51cb9f81de883a011305cf4da2346c7c99545d31`,
+        Authorization: `Token r8_5hdsTcr9XS7R8MraiV33ohfHZrFUOVF35l4HR`,
         'Content-Type': 'application/json'
       }
     }
