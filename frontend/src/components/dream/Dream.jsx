@@ -6,7 +6,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import image_mask from '../../assets/mask_image.png'
 import { ToastContainer, toast } from 'react-toastify';
 
-const baseUrl = "http://65.108.142.188:7777/";
+const baseUrl = "http://65.108.27.137:7777/";
 
 export const Dream = () => {
   const [pictureRoute, setPictureRoute] = useState('')
@@ -167,10 +167,10 @@ export const Dream = () => {
   return (
     <div className="gpt3__header section__padding" id="home">
       <div className='generate'>
-        <h1><b>Generating dream rooms <span>using AI</span> for everyone.</b></h1>
+        <h1><b>Generating images <span>using AI</span> for everyone.</b></h1>
       </div>
       <div className='generate'>
-        <button type="button" onClick={onGenerate}>Redesign your image</button>
+        <button type="button" onClick={onGenerate}>Generate your image</button>
       </div>
       <div className="gpt3__header-content">
         <div className="original">

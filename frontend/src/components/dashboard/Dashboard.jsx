@@ -14,10 +14,10 @@ export const Dashboard = () => {
   return (
     <div className="gpt3__header section__padding" id="home">
       <div className='generate'>
-        <h1><b>Generating dream rooms <span>using AI</span> for everyone.</b></h1>
+        <h1><b>Regenerate images <span>using AI</span> for everyone.</b></h1>
       </div>
       <div className='generate'>
-        <button type="button" ><Link to="/dream">Generate your dream room</Link></button>
+        <button type="button" ><Link to="/dream">Generate images</Link></button>
       </div>
       <div className="gpt3__header-content">
         <div className="original">
